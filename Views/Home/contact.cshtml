@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "contact";
+    Layout = "~/Views/Laptop/master.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        table, th {
+            border: 1px solid black;
+            text-align:center;
+            margin-left: 200px;
+            border-spacing: 15px;
+            padding-left:30px;
+        }
+
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <table style="width:37% ;margin-left:450px">
+        
+        <tr>
+            <th style="background-color: black; color: white;margin-top:20px;margin-bottom:20px;padding-bottom:10px;padding-top:10px"><font face="Sanp ITC">Contact Details</font></th>
+        </tr>
+
+        <tr><td><br /></td></tr>
+       
+
+        <tr style="margin-left:30px">
+            <td><p>Address:	E-470/9, Riffle Range road, New Iqbal Park, Lahore cantt.</p></td>
+        </tr>
+
+        <tr style="margin-left:30px">
+            <td style="margin-left:30px"><p>Phone:	042-36611996 / 0321 4107800</p></td>
+        </tr>
+
+        <tr style="margin-left:30px">
+            <td style="margin-left:30px"><p>Email:	scorpionz17@gmail.com</p></td>
+        </tr>
+
+        <tr style="margin-left:30px">
+            <td><p>Website:	www.atonline.com.pk</p></td>
+        </tr>
+
+        <tr><td><br /></td></tr>
+    </table>
+
+    <br />
+    <br />
+    <br />
+
+    <form role="form" action="/Home/contact1" method="post" style="margin-left: 570px; background-color: black; margin-right: 300px;text-align: center">
+        <br />
+        <br />
+        <label style="margin-right:10px;color:white"><b>Contact US Form</b></label>
+        <br />
+        <br />
+        <ul class="navbar-form" style="margin-right: 30px">
+            <li style="margin-bottom:40px"><span class="glyphicon glyphicon-user" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="name" placeholder="Name" required /></li>    
+            <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-envelope" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="email" name="email" placeholder="Email" required /></li>
+            <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-earphone" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="phone" placeholder="Phone" required /></li>
+            <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-envelope" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="comments" placeholder="Comments" required style="height:40px" /></li>
+        </ul>
+      
+        <button type="submit" name="but" style="margin-left: 240px; margin-right: 10px; color: white; background-color:GoldenRod"> Sign in </button>
+        <br />
+        <br />
+        <br />
+    </form>
+    <br />
+    <br />
+    <br />
+</body>
+</html>
+
+

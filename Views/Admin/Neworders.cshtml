@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Neworders";
+    Layout = "~/Views/Admin/blank-page.cshtml";
+}
+@using MvcApplication2.Models
+<div>
+    <table style="width: 80%; border-radius: 25px;text-align:center" border="1" class="rcorners">
+        <tr style="background-color:black;color:white">
+            <th style="text-align:center">Customer Id</th>
+            <th style="text-align:center">Customer Name</th>
+            <th style="text-align:center">Product Name</th>
+            <th style="text-align:center">unitprice</th>
+            <th style="text-align:center">Quantity</th>
+            
+            
+        </tr>
+        @{
+          
+         List<login> l2=ViewBag.customer_name;
+         int i=0;
+            foreach (var q in Model)
+            {
+
+                <tr style="line-height:100px;width:50px;">
+                    <td>@q.cid</td>
+                    <td>@l2[i].fname</td>
+                    <td>@q.product_name</td>
+                    <td>@q.l_price</td>
+                    <td>@q.qantity</td>
+                   
+                </tr>
+                i++;
+            }
+        }
+    </table>
+

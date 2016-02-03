@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "master";
+}
+@using MvcApplication2.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: GoldenRod" href="#"><b>Elegant Laptops</b> </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav pull-right">
+                <li> <a href="/Laptop/index" style="color: GoldenRod">HOME</a></li>
+                <li> <a href="/Home/about" style="color: GoldenRod">ABOUT US</a></li>
+                <li> <a href="/Home/contact" style="color: GoldenRod">CONTACT</a></li>
+                <li> <a href="/Home/polices" style="color: GoldenRod">POLICIES</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div>
+            <a href="/Home/signup"> <input type="button" style="background-color: GoldenRod; padding-left:10px;padding-right:10px ;margin-top:8px;width:auto;height:auto" class="btn btn-default" value="Sign UP"></a>
+            
+                
+            @if ((Session["customer_status"]==null))
+            {
+            <a href="/Home/login"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign in" /></a>
+            }
+            @if((Session["customer_status"]=="login"))
+            {
+                <a href="/Home/logout"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign out" /></a>
+            }
+            
+            <a href="/Order/cart"><input type="button" class="btn btn-default" style="background-color: palevioletred; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="My Cart" /></a>
+            <ul class=" nav navbar-nav navbar-right" style="margin-right: 40px; color: GoldenRod">
+                <li><a href="/Order/cart" style="color:goldenrod"><span class="glyphicon glyphicon-shopping-cart" style=" color: goldenrod; width: 15%;line-height:1.55"></span> My Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="list-group">
+                
+                @{
+                    laptopstoreEntities ed = new laptopstoreEntities();
+                    var p1 = ed.categories.Select(x => x);
+                    <a href="cat1" class="list-group-item active">Brands</a>
+                foreach (var cat in p1)
+                {
+                    <form action="/Laptop/index1">
+                        <input type="submit" class="list-group-item" name="category_name" value="@cat.category_name" style="text-align:center;width:200px" />
+                        @*<a href="/Laptop/@cat.category_name" class="list-group-item">@cat.category_name</a>*@
+                    </form>
+                }
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div style="width:50% ;float:left">
+                @RenderSection("about", required: false)
+                @RenderSection("products", required: false)
+                @RenderSection("record", required: false)
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

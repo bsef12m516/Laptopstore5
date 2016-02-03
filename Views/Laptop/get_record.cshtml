@@ -1,0 +1,183 @@
+﻿@model MvcApplication2.Models.product
+@using MvcApplication2.Models
+
+
+@{
+    ViewBag.Title = "get_record";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: GoldenRod" href="#"><b>Elegant Laptops</b> </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav pull-right">
+                <li> <a href="/Home/index" style="color: GoldenRod">HOME</a></li>
+                <li> <a href="/Home/about" style="color: GoldenRod">ABOUT US</a></li>
+                <li> <a href="/Home/contact" style="color: GoldenRod">CONTACT</a></li>
+                <li> <a href="/Home/products" style="color: GoldenRod">PRODUCTS</a></li>
+                <li> <a href="/Home/polices" style="color: GoldenRod">POLICIES</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div>
+            <a href="/Home/signup"> <input type="button" style="background-color: GoldenRod; padding-left:10px;padding-right:10px ;margin-top:8px;width:auto;height:auto" class="btn btn-default" value="Sign UP"></a>
+            <a href="/Home/login"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign In" /></a>
+            <a href="/Order/cart"><input type="button" class="btn btn-default" style="background-color: palevioletred; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="My Cart" /></a>
+            <ul class=" nav navbar-nav navbar-right" style="margin-right: 40px; color: GoldenRod">
+                <li><a href="#" style="color:goldenrod"><span class="glyphicon glyphicon-shopping-cart" style=" color: goldenrod; width: 15%;line-height:1.55"></span> My Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="list-group">
+                <a href="cat1" class="list-group-item active">Categories</a>
+               @foreach (var cat in ViewBag.category)
+{
+    <a href="/Laptop/@cat.category_name" class="list-group-item">@cat.category_name</a>
+}
+
+            </div>
+        </div>
+        
+            @if (ViewBag.name.Equals("HP 15-r001tu"))
+            {
+                <div class="col-lg-2">
+                    <img src="~/images/HP 15-r001tu Core i5 4th Generation.jpg" alt="Mountain View" />
+                </div>
+                
+
+                <div class="col-lg-4" style="margin-left:100px;margin-right:80px;color:white;background-color:black;margin-bottom:20px">
+                    @{
+                        <pre style="color: white; background-color: black;margin-top:10px"> @ViewBag.specs</pre>
+                    }
+
+                    <form action="/Home/Login_Signup" method="post">
+                        <input type="submit" value="Add to Cart"  style="color: black; background-color: white ;margin-left:250px;margin-bottom:10px" />
+                        @Html.HiddenFor(x=>x.name)
+                      
+                       
+                    </form>
+                </div>
+                
+                
+                
+            }
+
+            @if (ViewBag.name.Equals("hppavillion147"))
+            {
+                 <div class="col-lg-2">
+                    <img src="~/images/hp pavillion 14.jpg" alt="Mountain View">
+                 </div>
+                
+                 <div class="col-lg-4" style="margin-left:100px;margin-right:80px;color:white;background-color:black;margin-bottom:20px">
+                    @{
+                        <pre style="color: white; background-color: black;margin-top:10px"> @ViewBag.specs</pre>
+                    }
+
+                    <form action="/Home/Login_Signup" method="post">
+                        <input type="submit" value="Add to Cart"  style="color: black; background-color: white ;margin-left:250px;margin-bottom:10px" />
+                        @Html.HiddenFor(x=>x.name)
+                      
+                       
+                    </form>
+                </div>
+                
+            }
+
+            @if (ViewBag.name.Equals("hppavillion157"))
+            {
+                <img src="~/images/hppavillion15.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hppavillion155"))
+            {
+                <img src="~/images/hppavillion15corei5.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hp Envy 17"))
+            {
+                <img src="~/images/Hpenvy173D corei7.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hppavilliondm4"))
+            {
+                <img src="~/images/Hppaviiliondm4corei5.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hpenvy4"))
+            {
+                <img src="~/images/Hpenvy4corei5.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hpenvyspectre"))
+            {
+                <img src="~/images/Hpenvyspectre.jpg" alt="Mountain View">
+            }
+
+            @if (ViewBag.name.Equals("hpprobook"))
+            {
+                <img src="~/images/Hp probook core i7.jpg" alt="Mountain View">
+            }
+        <div class="col-lg-2" >
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align:center">Rate the product</div>
+                <div class="panel-body" style="text-align:center">
+                    <ul class="navbar-form " style="color:white">
+                        <li>
+                            <a href="val1"><span class="glyphicon glyphicon-star" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: white;color:goldenrod"></span> </a>
+                            <a href="val1"><span class="glyphicon glyphicon-star" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: white ;color:goldenrod"></span></a>
+                            <a href="val1"><span class="glyphicon glyphicon-star" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: white;color:goldenrod"></span></a>
+                            <a href="val1"><span class="glyphicon glyphicon-star" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: white;color:goldenrod"></span></a>
+                            <a href="val1"><span class="glyphicon glyphicon-star" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: white;color:goldenrod"></span></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+</body>
+</html>
+
+
+
+
+
+

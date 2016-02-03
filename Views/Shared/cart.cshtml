@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "cart";
+}
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+
+        table, th {
+            border: 1px solid black;
+            padding: 5px;
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: GoldenRod" href="#"><b>Elegant Laptops</b> </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav pull-right">
+                <li> <a href="index" style="color: GoldenRod">HOME</a></li>
+                <li> <a href="about" style="color: GoldenRod">ABOUT US</a></li>
+                <li> <a href="contact" style="color: GoldenRod">CONTACT</a></li>
+                <li> <a href="polices" style="color: GoldenRod">POLICIES</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div>
+            <button type="button" style="background-color: GoldenRod; padding-left:10px;padding-right:10px ;margin-top:8px" class="btn btn-default">Sign Up</button>
+            <button type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px">Sign In</button>
+            <button type="button" class="btn btn-default" style="background-color: palevioletred; padding-left: 10px; padding-right: 10px; margin-top: 8px">My Cart</button>
+            <ul class=" nav navbar-nav navbar-right" style="margin-right: 30px; color: GoldenRod">
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <table style="width:80%">
+            <tr style="background-color:black;color:white">
+                <th></th>
+                <th>Product Name</th>
+                <th>unitprice</th>
+                <th>Quantity</th>
+                <th>Totalprice</th>
+            </tr>
+            <tr style="line-height:100px;width:50px;">
+                <td></td>
+                <td>Hp ProbOOK</td>
+                <td>45000</td>
+                <td>1</td>
+                <td>45000</td>
+            </tr>
+        </table>
+        <button style="margin-left:800px;margin-top:30px;background-color:black;color:goldenrod">Update Cart</button>
+        <button style="margin-top: 30px; background-color: black; color: goldenrod">Continue Shopping</button>
+    </div>
+</body>
+</html>

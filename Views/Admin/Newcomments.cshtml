@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Newcomments";
+    Layout = "~/Views/Admin/blank-page.cshtml";
+}
+
+@using MvcApplication2.Models
+<div>
+    <table style="width: 80%; border-radius: 25px;text-align:center" border="1" class="rcorners">
+        <tr style="background-color:black;color:white">
+           
+            <th style="text-align:center">Customer Name</th>
+            <th style="text-align:center">Customer Id</th>
+            <th style="text-align:center">Customer Phone no</th>
+            <th style="text-align:center">Comments</th>
+
+
+        </tr>
+        @{
+
+           
+            foreach (var q in Model)
+            {
+
+                <tr style="line-height:100px;width:50px;">
+                    <td>@q.name</td>
+                    <td>@q.email</td>
+                    <td>@q.phone</td>
+                    <td>@q.comments</td>
+                </tr>
+                
+            }
+        }
+    </table>
+
+

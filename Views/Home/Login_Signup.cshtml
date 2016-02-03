@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Login_Signup";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: GoldenRod" href="#"><b>Elegant Laptops</b> </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav pull-right">
+                <li> <a href="/Laptop/index" style="color: GoldenRod">HOME</a></li>
+                <li> <a href="/Home/about" style="color: GoldenRod">ABOUT US</a></li>
+                <li> <a href="/Home/contact" style="color: GoldenRod">CONTACT</a></li>
+                <li> <a href="/Home/polices" style="color: GoldenRod">POLICIES</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div>
+            <a href="/Home/signup"><input type="button" style="background-color: GoldenRod; padding-left:10px;padding-right:10px ;margin-top:8px" class="btn btn-default" value="Sign Up"/></a>
+            @if ((Session["customer_status"] == null))
+            {
+                <a href="/Home/login"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign in" /></a>
+            }
+            @if ((Session["customer_status"] == "login"))
+            {
+                <a href="/Home/logout"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign out" /></a>
+            }
+             <a href="/Order/cart"><input type="button" class="btn btn-default" style="background-color: palevioletred; padding-left: 10px; padding-right: 10px; margin-top: 8px" value="My Cart"/></a>
+                     <ul class=" nav navbar-nav navbar-right" style="margin-right: 30px; color: GoldenRod">
+                         <li><a href="/Order/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+                     </ul>
+</div>
+    </nav>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="list-group">
+                <a href="cat1" class="list-group-item active">Categories</a>
+                @foreach (var cat in ViewBag.category)
+                {
+                    <a href="/Laptop/@cat.category_name" class="list-group-item">@cat.category_name</a>
+                }
+            </div>
+        </div>
+   
+        <div class="col-xs-4" style="margin-top:80px;margin-left:70px">
+            <h2 style="text-align:center">Registered Customers</h2>
+            <div style="background-color:black">
+            <form role="form" action="/Home/login1" method="post" style="margin-left:150px;background-color:black;margin-right:700px">
+                <br />
+                <br />
+                <label style="margin-left: 50px; margin-right: 10px; color: white"><b>LOGIN</b></label>
+                <br />
+                <br />
+                <label style="margin-right:10px ;color:white">Email</label>
+                <input type="email" name="email" placeholder="Email" required />
+                <br />
+                <br />
+                <label style="margin-right: 10px; color: white">Password</label>
+                <input type="password" name="password" placeholder="Password" required />
+
+                <br />
+                <br />
+                <button type="submit" name="but" style="margin-left:90px;background-color:goldenrod;color:white"> Login </button>
+                <br />
+                <br />
+                <br />
+            </form>
+         </div>
+            </div>
+
+        <br />
+        <br />
+        <br />
+
+        <div class="col-xs-1">
+        </div>
+
+        <div class="col-xs-4">
+        <br />
+            <h2 style="text-align:center">New Customers</h2>
+        <form role="form" action="/Home/login" method="post" style="margin-left:10px;background-color:black;margin-right:20px;text-align:center">
+            <br />
+            <br />
+            <label style="margin-right:10px;color:white"><b>Sign Up</b></label>
+            <br />
+            <br />
+            <ul class="navbar-form" style="margin-right: 30px">
+                <li style="margin-bottom:40px"><span class="glyphicon glyphicon-user" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="fname" placeholder="FirstName" required /></li>
+                <li style="margin-bottom:40px"><span class="glyphicon glyphicon-user" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="lname" placeholder="LatName" required /></li>
+                <li style="margin-bottom:40px"><span class="glyphicon glyphicon-lock" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="password" name="pass" placeholder="Password" required /></li>
+                <li style="margin-bottom:40px"><span class="glyphicon glyphicon-lock" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="password" name="cpass" placeholder="Confirm Password" required /></li>
+                <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-envelope" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="email" name="email" placeholder="Email" required /></li>
+                <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-earphone" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="phone" placeholder="Phone" required /></li>
+            </ul>
+
+            <button type="submit" name="but" style="margin-left: 240px; margin-right: 10px; color: white; background-color:GoldenRod"> Sign Up </button>
+            <br />
+            <br />
+            <br />
+        </form>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+

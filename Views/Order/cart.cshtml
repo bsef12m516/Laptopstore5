@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "cart";
+}
+@{
+    Layout = null;
+}
+@using MvcApplication2.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+
+        table, th {
+            border: 1px solid black;
+            padding: 5px;
+            margin-left: 200px;
+        }
+        .roundedButton {
+            font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            color: #181818;
+            color: rgba(0,0,0,0.4);
+            width: 65px;
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            outline: 0;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+            -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.4);
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="color: GoldenRod" href="#"><b>Elegant Laptops</b> </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav pull-right">
+                <li> <a href="/Home/index" style="color: GoldenRod">HOME</a></li>
+                <li> <a href="/Home/about" style="color: GoldenRod">ABOUT US</a></li>
+                <li> <a href="/Home/contact" style="color: GoldenRod">CONTACT</a></li>
+                <li> <a href="/Home/polices" style="color: GoldenRod">POLICIES</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+
+    <nav class="navbar navbar-inverse" role="navigation" style="background-color:navy">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <div>
+            <button type="button" style="background-color: GoldenRod; padding-left:10px;padding-right:10px ;margin-top:8px" class="btn btn-default">Sign Up</button>
+            @if ((Session["customer_status"] == null))
+            {
+                <a href="/Home/login"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign in" /></a>
+            }
+            @if ((Session["customer_status"] == "login"))
+            {
+                <a href="/Home/logout"><input type="button" class="btn btn-default" style="background-color: skyblue; padding-left: 10px; padding-right: 10px; margin-top: 8px; width: auto; height: auto" value="Sign out" /></a>
+            }
+            <button type="button" class="btn btn-default" style="background-color: palevioletred; padding-left: 10px; padding-right: 10px; margin-top: 8px">My Cart</button>
+            <ul class=" nav navbar-nav navbar-right" style="margin-right: 30px; color: GoldenRod">
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <table style="width: 80%; border-radius: 25px;text-align:center" border="1" class="rcorners">
+            <tr style="background-color:black;color:white">
+                <th style="text-align:center">Image</th>
+                <th style="text-align:center">Product Name</th>
+                <th style="text-align:center">unitprice</th>
+                <th style="text-align:center">Quantity</th>
+                <th style="text-align:center">Totalprice</th>
+                <th style="width:100px"></th>
+            </tr>
+            @{
+               List<product> l1=ViewBag.ord;
+               int i=0;
+               int amount = 0; 
+            foreach (var q in Model)
+            {
+                
+                <tr style="line-height:100px;width:50px;">
+
+                    <td style="width:100px"><img src="~/images/@l1[i].image"/></td>
+                    <td>@q.product_name</td>
+                    <td>@q.l_price</td>
+                    <td>@q.qantity</td>
+                    @{if(i==0)
+                    {
+                            amount=int.Parse(q.l_price);
+                            q.amount = amount;
+                         <td>@q.amount</td>
+                    }
+                    else
+                    {
+                        amount += int.Parse(q.l_price);
+                        q.amount = amount;
+                        <td>@q.amount</td>
+                    }
+                    }
+
+                    <td style="background-color: black; color: white;text-align:center; margin-top: 20px; margin-right: 50px; margin-bottom: 20px"><span class="glyphicon glyphicon-trash" style="color: White;text-align:center; width: 8%"/>@Html.ActionLink("Delete", "DeleteItem", new { id = q.pid, style="background-color:black; color:white; margin-top:20px;margin-right:20px;margin-bottom:20px" })</td>
+                </tr>
+                i++;
+            }
+            }
+        </table>
+       
+        <a href="/Laptop/index"><input type="button" style="margin-left:800px;margin-top:30px;background-color:black;color:goldenrod" value="Continue Shoping" class="btn btn-default"></></a> 
+        <a href="/Order/delete_order"><input type="button" style="margin-top: 30px; background-color: black; color: goldenrod" value="Check out" class="btn btn-default"></></a> 
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Admin/blank-page.cshtml";
+   
+}
+
+@model MvcApplication2.Models.login
+
+<br />
+<br />
+<div id="checking">Checking...</div>
+<div>
+    <form role="form" method="post" action="/Admin/signup1" style="margin-left:350px;background-color:black;margin-right:320px;text-align:center">
+        <br />
+        <br />
+
+        <label style="margin-right:10px;color:white;font-family:'Monotype Corsiva'"><b>SIGN UP</b></label>
+        <br />
+        <br />
+        <div id="result" style="color:white"></div>
+        <ul class="navbar-form" style="margin-right: 30px">
+            <li style="margin-bottom:40px"><span class="glyphicon glyphicon-user" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="fname" placeholder="FirstName" required /></li>
+            <li style=""><span class="glyphicon glyphicon-user" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="lname" placeholder="UserName" required id="UserName" /></li>
+            <li><button id="b1" type="submit" style="margin-left: 140px; margin-right: 10px; color: white; background-color: GoldenRod; margin-bottom: 40px"> check availability </button></li>
+            <li style="margin-bottom:40px"><span class="glyphicon glyphicon-lock" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="password" name="password" placeholder="Password" required /></li>
+            <li style="margin-bottom:40px"><span class="glyphicon glyphicon-lock" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="password" name="cpass" placeholder="Confirm Password" required /></li>
+            <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-envelope" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="email" name="email" placeholder="Email" required /></li>
+            <li style="margin-bottom:40px"><span class=" glyphicon glyphicon-earphone" style="color: White; width: 8%; height: 150%; line-height: 1.65; background-color: GoldenRod"></span> <input type="text" name="phone" placeholder="Phone" required /></li>
+        </ul>
+
+        <button id="b2" type="submit" name="but" style="margin-left: 240px; margin-right: 10px; color: white; background-color:GoldenRod" > Sign Up </button>
+
+        <br />
+        <br />
+        <br />
+    </form>
+    <br />
+    <br />
+
+    <div id="result"></div>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var userName = $('#UserName').val();
+
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/Home/doesUserNameExist?lname=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User already exists in database");
+                       
+
+                    }
+                    else {
+                        $('#result').text("User Name is available");
+                    }
+                       
+                });
+
+            });
+
+            });
+       
+    </script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"> </script>
+</div>

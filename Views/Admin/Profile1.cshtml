@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Admin/blank-page.cshtml";
+}
+<form style="border-radius:25px;border:solid;border-color:black;width:70%;margin-left:150px" class="rcorners">
+    <h3 style="text-align:center;font-family:'Monotype Corsiva'">Admin ID: @Model.Id</h3>
+    <h4 style="text-align:center;font-family:'Monotype Corsiva'">First Name: @Model.fname</h4>
+    <h4 style="text-align:center;font-family:'Monotype Corsiva'">Last Name: @Model.lname</h4>
+    <h4 style="text-align:center;font-family:'Monotype Corsiva'">Password: @Model.password</h4>
+    <h4 style="text-align:center;font-family:'Monotype Corsiva'">Email : @Model.email</h4>
+    <h4 style="text-align:center;font-family:'Monotype Corsiva'">Phone: @Model.phone</h4>
+</form>
